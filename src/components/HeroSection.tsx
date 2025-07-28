@@ -1,5 +1,5 @@
 
-import { Search, MapPin, Home, CreditCard, Building2, Warehouse, TreePine, Factory, Hotel, Coins } from "lucide-react";
+import { Search, MapPin, Home, CreditCard, Building2, Warehouse, TreePine, Factory, Hotel, Coins, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { transactionTypes, propertyTypes } from "@/pages/Home/components/FilterTypes";
 
 const cities = [
-  { value: "all", label: "ყველა ქალაქი" },
+  { value: "all", label: "ქალაქი" },
   { value: "თბილისი", label: "თბილისი" },
   { value: "ბათუმი", label: "ბათუმი" },
   { value: "ქუთაისი", label: "ქუთაისი" },
@@ -177,9 +177,9 @@ export const HeroSection = ({ onSearch }: HeroSectionProps) => {
           </p>
           
           <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-6 gap-6">
+            <div className="flex gap-6">
               {/* Transaction Type */}
-              <div className="lg:col-span-1 space-y-3">
+              <div className="w-2/12 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <CreditCard className="h-4 w-4 text-primary" />
                   <label className="text-sm font-semibold text-slate-700">
@@ -190,19 +190,19 @@ export const HeroSection = ({ onSearch }: HeroSectionProps) => {
                   value={filters.transactionType} 
                   onValueChange={(value) => setFilters({...filters, transactionType: value})}
                 >
-                  <SelectTrigger className="h-14 text-base border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl transition-colors">
+                  <SelectTrigger className="h-14 text-sm border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl transition-colors">
                     <SelectValue placeholder="აირჩიეთ ტიპი" />
                   </SelectTrigger>
                   <SelectContent className="rounded-xl">
                     {transactionTypes.map((type) => {
                       const getIcon = (value: string) => {
                         switch(value) {
-                          case 'იყიდება': return <Coins className="h-4 w-4 text-green-500" />;
-                          case 'ქირავდება': return <Home className="h-4 w-4 text-blue-500" />;
-                          case 'გირავდება': return <CreditCard className="h-4 w-4 text-orange-500" />;
-                          case 'გაიცემა იჯარით': return <Building2 className="h-4 w-4 text-purple-500" />;
-                          case 'ქირავდება დღიურად': return <Hotel className="h-4 w-4 text-pink-500" />;
-                          default: return <CreditCard className="h-4 w-4 text-slate-400" />;
+                          case 'იყიდება': return <Coins className="h-4 w-4 text-primary" />;
+                          case 'ქირავდება': return <Home className="h-4 w-4 text-primary" />;
+                          case 'გირავდება': return <CreditCard className="h-4 w-4 text-primary" />;
+                          case 'გაიცემა იჯარით': return <Building2 className="h-4 w-4 text-primary" />;
+                          case 'ქირავდება დღიურად': return <Hotel className="h-4 w-4 text-primary" />;
+                          default: return <CreditCard className="h-4 w-4 text-primary" />;
                         }
                       };
                       return (
@@ -219,7 +219,7 @@ export const HeroSection = ({ onSearch }: HeroSectionProps) => {
               </div>
 
               {/* Property Type */}
-              <div className="lg:col-span-1 space-y-3">
+              <div className="w-2/12 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <Home className="h-4 w-4 text-primary" />
                   <label className="text-sm font-semibold text-slate-700">
@@ -230,20 +230,20 @@ export const HeroSection = ({ onSearch }: HeroSectionProps) => {
                   value={filters.propertyType} 
                   onValueChange={(value) => setFilters({...filters, propertyType: value})}
                 >
-                  <SelectTrigger className="h-14 text-base border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl transition-colors">
+                  <SelectTrigger className="h-14 text-sm border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl transition-colors">
                     <SelectValue placeholder="აირჩიეთ ტიპი" />
                   </SelectTrigger>
                   <SelectContent className="rounded-xl">
                     {propertyTypes.map((type) => {
                       const getIcon = (value: string) => {
                         switch(value) {
-                          case 'ბინები': return <Building2 className="h-4 w-4 text-blue-500" />;
-                          case 'სახლები': return <Home className="h-4 w-4 text-green-500" />;
-                          case 'აგარაკები': return <TreePine className="h-4 w-4 text-emerald-500" />;
-                          case 'მიწის ნაკვეთები': return <MapPin className="h-4 w-4 text-amber-500" />;
-                          case 'კომერციული ფართები': return <Factory className="h-4 w-4 text-gray-500" />;
-                          case 'სასტუმროები': return <Hotel className="h-4 w-4 text-pink-500" />;
-                          default: return <Home className="h-4 w-4 text-slate-400" />;
+                          case 'ბინები': return <Building2 className="h-4 w-4 text-primary" />;
+                          case 'სახლები': return <Home className="h-4 w-4 text-primary" />;
+                          case 'აგარაკები': return <TreePine className="h-4 w-4 text-primary" />;
+                          case 'მიწის ნაკვეთები': return <MapPin className="h-4 w-4 text-primary" />;
+                          case 'კომერციული ფართები': return <Factory className="h-4 w-4 text-primary" />;
+                          case 'სასტუმროები': return <Hotel className="h-4 w-4 text-primary" />;
+                          default: return <Home className="h-4 w-4 text-primary" />;
                         }
                       };
                       return (
@@ -259,8 +259,8 @@ export const HeroSection = ({ onSearch }: HeroSectionProps) => {
                 </Select>
               </div>
 
-              {/* Search Input - Now takes 2 columns */}
-              <div className="lg:col-span-1 space-y-3">
+              {/* Search Input with Integrated City Selection - Now takes 2 columns */}
+              <div className="w-5/12 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-primary" />
                   <label className="text-sm font-semibold text-slate-700">
@@ -271,72 +271,75 @@ export const HeroSection = ({ onSearch }: HeroSectionProps) => {
                   <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-500" />
                   <Input
                     type="text"
-                    placeholder="შეიყვანეთ მისამართი, რაიონი ან ქალაქი..."
+                    placeholder="შეიყვანეთ მისამართი, რაიონი..."
                     value={filters.search}
                     onChange={(e) => setFilters({...filters, search: e.target.value})}
                     onKeyPress={handleKeyPress}
-                    className="h-14 text-base border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl pl-11 pr-4 transition-colors"
+                    className="h-14 text-base border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl pl-11 pr-32 transition-colors"
                   />
+
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                    <Select 
+                      value={filters.city} 
+                      onValueChange={(value) => setFilters({...filters, city: value})}
+                    >
+                      <SelectTrigger className="h-10 w-48 text-sm border border-slate-300 hover:border-primary/50 focus:border-primary rounded-lg transition-colors bg-white/90 backdrop-blur-sm">
+                        <SelectValue placeholder="ქალაქი" />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-xl max-h-60 w-64">
+                        {cities.map((city) => (
+                          <SelectItem key={city.value} value={city.value} className="text-sm py-2">
+                            <div className="flex items-center gap-2">
+                              <MapPin className="h-3 w-3 text-primary" />
+                              <span>{city.label}</span>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
               </div>
 
-              {/* City Selection */}
-              <div className="lg:col-span-1 space-y-3">
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-primary" />
-                  <label className="text-sm font-semibold text-slate-700">
-                    ქალაქი
-                  </label>
-                </div>
-                <Select 
-                  value={filters.city} 
-                  onValueChange={(value) => setFilters({...filters, city: value})}
-                >
-                  <SelectTrigger className="h-14 text-base border-2 border-slate-200 hover:border-primary/50 focus:border-primary rounded-xl transition-colors">
-                    <SelectValue placeholder="აირჩიეთ ქალაქი" />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-xl max-h-60">
-                    {cities.map((city) => (
-                      <SelectItem key={city.value} value={city.value} className="text-base py-3">
-                        <div className="flex items-center gap-3">
-                          <MapPin className="h-4 w-4 text-blue-500" />
-                          <span>{city.label}</span>
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Search Button */}
-              <div className="lg:col-span-1 flex items-end">
-                <Button 
-                  onClick={handleSearch}
-                  size="lg" 
-                  className="group h-14 w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base"
-                >
-                  <Search className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                  ძებნა
-                  <span className="ml-2 text-xs opacity-75">Enter</span>
-                </Button>
-              </div>
-            </div>
-            
-            {/* Search Stats */}
-            <div className="mt-6 pt-6 border-t border-slate-100">
-              <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-600">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>8000+ ქონება</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span>ყოველდღიური განახლება</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span>შემოწმებული გამყიდველები</span>
-                </div>
+              {/* Search and Clear Buttons */}
+              <div className="w-3/12 flex flex-col justify-end">
+                {/* Check if any filter is selected */}
+                {(filters.search !== "" || filters.transactionType !== "all" || filters.propertyType !== "all" || filters.city !== "all") ? (
+                  <div className="grid grid-cols-10 gap-2">
+                    <Button 
+                      onClick={handleSearch}
+                      size="lg" 
+                      className="group h-14 col-span-7 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base"
+                    >
+                      <Search className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
+                      ძიება
+                    </Button>
+                    
+                    <Button 
+                      onClick={() => setFilters({
+                        search: "",
+                        transactionType: "all",
+                        propertyType: "all",
+                        city: "all"
+                      })}
+                      variant="outline" 
+                      size="lg"
+                      className="h-14 col-span-3 flex items-center justify-center border border-slate-300 hover:bg-slate-100 rounded-xl transition-all duration-300"
+                      aria-label="გასუფთავება"
+                    >
+                      <X className="h-6 w-6 text-red-500" />
+                    </Button>
+                  </div>
+                ) : (
+                  <Button 
+                    onClick={handleSearch}
+                    size="lg" 
+                    className="group h-14 w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base"
+                  >
+                    <Search className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
+                    ძიება
+                  </Button>
+                )}
               </div>
             </div>
           </div>
